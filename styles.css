@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #05386B;
+    --dark-green: #379683;
+    --background-color: #5cdb95;
+    --light-green: #8ee4af;
+    --text-color: #edf5e1;
+    --title-font: 'Chonburi', cursive;
+    --text-font: 'Poly', serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--dark-blue);
+    font-family: var(--text-font);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding-top: 5px;
+    padding-left: 10px;
+    background-color: var(--light-green);
+}
+
+h1 {
+    font-family: var(--title-font);
+    font-size: 40px;;
+}
+
+.header-item {
+    padding-bottom: 5px;
+}
+
+.open {
+    background-color: var(--dark-blue);
+    color: var(--text-color);
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+}
+
+.library {
+    color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.library > div {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    width: 150px;
+    background-color: var(--dark-green);
+}
+
+.form-popup {
+    display: none;
+    height: 200px;
+    width: 250px;
+    position: fixed;
+    bottom: 20px;
+    right: 150px;
+    z-index: 2;
+    background-color: var(--dark-green);
+    border: 1px solid black;
+}
+
+/* create slider for "read" value */
+.toggle {
+    --width: 40px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.toggle__fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: var(--light-green);
+    transition: background 0.2s;
+}
+
+.toggle__fill::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: var(--height);
+    width: var(--height);
+    background: var(--text-color);
+    /*box-shadow: 0 0 10px rbga(0, 0, 0, 0.25);*/
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+    background: var(--dark-blue);
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+    transform: translateX(var(--height));
+}
