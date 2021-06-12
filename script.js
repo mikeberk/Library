@@ -50,10 +50,10 @@ function displayLibrary() {
         const deleteButton = document.createElement('button');
 
 
-        titleElement.textContent = `Title: ${book.title}`;
-        authorElement.textContent = `Author: ${book.author}`;
-        pagesElement.textContent = `Number Of Pages: ${book.pages}`;
-        readLabel.textContent = "Read";
+        titleElement.textContent = `${book.title}`;
+        authorElement.textContent = `By ${book.author}`;
+        pagesElement.textContent = `Pages: ${book.pages}`;
+        readLabel.textContent = "Read ";
         readInput.setAttribute('type', 'checkbox');
         readInput.name = "tileRead";
         readInput.checked = book.read;
@@ -71,6 +71,8 @@ function displayLibrary() {
 
     document.querySelectorAll('.remove')
             .forEach(button => button.addEventListener('click', removeFromLibary));
+    localStorage.clear();
+    localStorage.setItem("library", JSON.stringify(myLibrary));
 }
 
 // toggle form display for creating a new book
@@ -105,8 +107,18 @@ document.addEventListener('change', toggleRead);
 
 
 window.addEventListener('load', () => {
-    myLibrary.push(new Book("Sample Title", "Some Author", "300", "Read"));
-    displayLibrary();
-    myLibrary.push(new Book("Other Title", "Other Author", "250", "Not Read"));
-    displayLibrary();
+    if (!localStorage.library) {
+        myLibrary.push(new Book("Sample Title", "Some Author", "300", "Read"));
+        displayLibrary();
+        myLibrary.push(new Book("Other Title", "Other Author", "250", "Not Read"));
+        displayLibrary();
+    } else {
+        let localLibrary = JSON.parse(localStorage.getItem("library"));
+        // need to add a loop to create book classes of each obj stored in parsed array
+        localLibrary.forEach(book => {
+            myLibrary.push(new Book(book.title, book.author, book.pages, book.read));
+        })
+        displayLibrary();
+    }
+    
 });

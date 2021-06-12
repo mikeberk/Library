@@ -11,7 +11,7 @@
     --light-green: #8ee4af;
     --text-color: #edf5e1;
     --title-font: 'Chonburi', cursive;
-    --text-font: 'Poly', serif;
+    --text-font: 'Roboto', sans-serif;
 }
 
 body {
@@ -39,6 +39,24 @@ h1 {
     padding-bottom: 5px;
 }
 
+button {
+    background-color: var(--light-green);
+    color: var(--dark-blue);
+    border: none;
+    border-radius: 2px;
+    padding: 1px;
+    transition: all 0.2s;
+}
+
+button:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+button:active {
+    filter: brightness(115%);
+}
+
 .open {
     background-color: var(--dark-blue);
     color: var(--text-color);
@@ -50,6 +68,16 @@ h1 {
     position: fixed;
     bottom: 20px;
     right: 50px;
+    transition: all 0.2s;
+}
+
+.open:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+.open:active {
+    filter: brightness(115%);
 }
 
 .library {
@@ -59,11 +87,25 @@ h1 {
 }
 
 .library > div {
-    border: 1px solid black;
+    border-radius: 5px;
     margin: 10px;
     padding: 5px;
     width: 150px;
+    height: 175px;
+    position: relative;
     background-color: var(--dark-green);
+    box-shadow: 5px 5px 5px var(--dark-blue);
+}
+
+.library > div > * {
+    margin-bottom: 5px;
+}
+
+.library > div > button {
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    right: 8px;
 }
 
 .form-popup {
@@ -74,52 +116,46 @@ h1 {
     bottom: 20px;
     right: 150px;
     z-index: 2;
+    padding: 5px;
+    border-radius: 5px;
     background-color: var(--dark-green);
-    border: 1px solid black;
+    box-shadow: 5px 5px 5px var(--dark-blue);
 }
 
-/* create slider for "read" value */
-.toggle {
-    --width: 40px;
-    --height: calc(var(--width) / 2);
-    --border-radius: calc(var(--height) / 2);
-    cursor: pointer;
-    display: inline-block;
+form > button {
+    margin-top: 10px;
 }
 
-.toggle__input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    cursor: pointer;
+form > label {
+    font-weight: 500;
+}
+label[for="read"] {
+    display: block;
 }
 
-.toggle__fill {
-    position: relative;
-    width: var(--width);
-    height: var(--height);
-    border-radius: var(--border-radius);
-    background: var(--light-green);
-    transition: background 0.2s;
+input[type="number"] {
+    width: 50px;
 }
 
-.toggle__fill::after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: var(--height);
-    width: var(--height);
-    background: var(--text-color);
-    /*box-shadow: 0 0 10px rbga(0, 0, 0, 0.25);*/
-    border-radius: var(--border-radius);
-    transition: transform 0.2s;
+input[type="text"], input[type="number"] {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: var(--light-green);
+    background-color: var(--dark-green);
+    border-bottom: 2px solid var(--dark-blue);
 }
 
-.toggle__input:checked ~ .toggle__fill {
-    background: var(--dark-blue);
+input[type="text"]:focus, input[type="number"]:focus {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: var(--dark-green);
+    border-bottom: 2px solid var(--dark-blue);
+    color: var(--light-green);
 }
 
-.toggle__input:checked ~ .toggle__fill::after {
-    transform: translateX(var(--height));
+input[type="text"]:focus-visible, input[type="number"]:focus-visible {
+    outline: none;
 }
+
