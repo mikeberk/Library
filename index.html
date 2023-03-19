@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <h1 class="header-item">Library</h1>
-        <p class="header-item">View and edit the books in your library.</p>
-        <p class="header-item">Click on the button to add a new book.</p>
+      <h1 class="header-item">Library</h1>
+      <p class="header-item">View and edit the books in your library.</p>
+      <p class="header-item">Click on the button to add a new book.</p>
     </div>
     <button class="open">Add Book</button>
     <div class="form-popup">
-        <form action="#" autocomplete="off">
-            <label for="title">
-                Book Title <input type="text" id="title" placeholder="Book title" name="title" required>
-            </label>
-            <label for="author">
-                Author <input type="text" id="author" placeholder="Author" name="author" required>
-            </label>
-            <label for="pages">
-                Number Of Pages <input type="number" id="pages" placeholder="1" name="pages" min="1" step="1" required>
-            </label>
-            <label for="read">
-                Read <input class="read" type="checkbox" id="read" name="read">
-            </label>
-            <button type="submit">Add Book</button>
-            <button type="reset" class="close">Cancel</button>
-        </form>
+      <form action="#" autocomplete="off" novalidate>
+        <label for="title">
+          Book Title
+          <input
+            type="text"
+            id="title"
+            placeholder="Book title"
+            name="title"
+            required
+          />
+        </label>
+        <label for="author">
+          Author
+          <input
+            type="text"
+            id="author"
+            placeholder="Author"
+            name="author"
+            required
+          />
+        </label>
+        <label for="pages">
+          Number Of Pages
+          <input
+            type="number"
+            id="pages"
+            placeholder="1"
+            name="pages"
+            min="1"
+            step="1"
+            required
+          />
+        </label>
+        <label for="read">
+          Read <input class="read" type="checkbox" id="read" name="read" />
+        </label>
+        <button type="submit">Add Book</button>
+        <button type="reset" class="close">Cancel</button>
+      </form>
+      <p id="error"></p>
     </div>
 
     <div class="library"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
-
 
 <!--
 <label for="indoor">
